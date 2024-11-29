@@ -1,5 +1,4 @@
 import React from 'react';
-import NavStyle from './NavBar.css';
 
 function HomePage() {
   return (
@@ -14,24 +13,27 @@ function HomePage() {
       </div>
       <div className="flex flex-col h-3/4 w-full bg-white items-center">
         <nav className="flex flex-row w-full justify-center bg-green-500 border-black border-2 text-white">
-          <a href="#ueber" className="py-2 px-6 w-1/4 hover:bg-green-600 transition-colors">
+          <a href="#ueber" className="py-2 px-6 w-1/4 hover:border-b-2 hover:border-white hover:bg-green-600 transition-all duration-100">
             Home
           </a>
-          <a href="#flora-fauna" className="py-2 px-6 w-1/4 hover:border-b-2 hover:border-white transition-all duration-100">
+          <a href="#flora-fauna" className="py-2 px-6 w-1/4 hover:border-b-2 hover:border-white hover:bg-green-600 transition-all duration-100">
             Über den oberwinterthurer Wald
           </a>
-          <a href="#sehenswuerdigkeiten" className="py-2 px-6 w-1/4 hover:bg-green-600 transition-colors">
+          <a href="#sehenswuerdigkeiten" className="py-2 px-6 w-1/4 hover:border-b-2 hover:border-white hover:bg-green-600 transition-all duration-100">
             Flora und Fauna
           </a>
-          <a href="#flora-fauna" className="py-2 px-6 w-1/4 hover:bg-green-600 transition-colors">
+          <a href="#flora-fauna" className="py-2 px-6 w-1/4 hover:border-b-2 hover:border-white hover:bg-green-600 transition-all duration-100">
             Sehenswürdigkeiten und Nutzung
           </a>
         </nav>
-        <section className="p-6 text-center max-w-2xl">
-          <p className="text-xl">
-            Willkommen zur Webseite über den Oberwinterthurer Wald! Erkunde die Geschichte, Flora und Fauna, sowie Wanderwege und Freizeitmöglichkeiten.
-          </p>
-        </section>
+        <div className='flex flex-row w-full bg-white items-center'>
+          <div className='h-full w-1/2'>
+            <img src='/images/wald_hintergrundbild.jpg' alt='Platzhalter für home' className=''/>
+          </div>
+          <div className='h-full w-1/2'>
+            <p></p>
+          </div>
+        </div>
       </div>
     </div>
   );
