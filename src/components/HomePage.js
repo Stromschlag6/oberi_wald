@@ -4,10 +4,10 @@ function HomePage() {
   return (
     <div className="flex flex-col items-center w-screen h-screen py-2 px-3 bg-red-300">
       <div className="flex flex-row py-3 px-2 h-1/4 bg-white text-black w-full">
-        <div className='h-full w-1/3 p-1'>
-          <img src='/images/Logo_finished.png' alt="Waldlogo" className="h-40 w-auto object-cover"/>
+        <div className='h-full w-1/5 flex justify-center items-center p-1'>
+          <img src='/images/Logo_finished.png' alt="Waldlogo" className="h-full w-full object-contain"/>
         </div>
-        <div className='h-full w-2/3 p-4'>
+        <div className='h-full w-4/5 p-4'>
           <h1>später Bild von der Umgebung</h1>
         </div>  
       </div>
