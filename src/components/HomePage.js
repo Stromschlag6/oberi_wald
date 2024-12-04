@@ -5,7 +5,7 @@ function HomePage() {
     <div className="flex flex-col items-center w-screen h-screen py-2 px-3 bg-cover" style={{ backgroundImage: `url('/images/wald_hintergrundbild.jpg')` }}>
       <div className="flex flex-row py-3 px-2 h-1/4 text-black w-full">
         <div className='flex flex-col h-full w-1/3 p-1 justify-center'>
-          <img src='/images/Logo_finished.png' alt="Waldlogo" className="object-cover w-1/3 bg-opacity-20"/>
+          <img src='/images/Logo_finished.png' alt="Waldlogo" className="object-cover w-1/3"/>
           <div className='w-2/3'/>
         </div>
         <div className='h-full w-2/3 p-4'/>
