@@ -37,8 +37,14 @@ function HomePage() {
         </div>
       </div>
       <div className='flex flex-col items-center h-screen w-screen grayscale bg-center'
-          style={{ backgroundImage: `url(/images/wald_hintergrundbild.jpg)` }}>
-        <div className='flex h-full w-full backdrop-blur-sm'>Geschichte</div>
+           style={{ backgroundImage: `url(/images/wald_hintergrundbild.jpg)` }}>
+        <div className='flex flex-col items-center h-full w-full backdrop-blur-sm'>
+          <h1 className='flex'>Über den oberwinterthurer Wald</h1>
+          <p className='flex'>Geschichte</p>
+        </div>
+      </div>
+      <div className='flex flex-col items-center h-screen w-screen bg-white'>
+        <h1 className='flex'>Sehenswürdigkeiten und Nutzung</h1>
       </div>
     </div>
   );
