@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
@@ -10,6 +13,20 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.bg-center {
+  transition: background-color 0.5s, filter 0.5s;
+}
+
+.grayscale {
+  filter: grayscale(1);
+  transition: filter 0.5s;
+}
+
+.bg-white {
+  background-color: white;
+  transition: background-color 0.5s;
 }
 
 code {
