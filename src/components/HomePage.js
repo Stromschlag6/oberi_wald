@@ -1,27 +1,42 @@
 import React, { useEffect, useState } from 'react';
 
 function HomePage() {
-  const [backgroundClass, setBackgroundClass] = useState('bg-center');
+
+  const [backgroundClass, setBackgroundClass] = useState('grayscale-0');
+  const [backgroundColor, setBackgroundColor] = useState('none');
+
 
 useEffect(() => {
   const handleScroll = () => {
     const scrollY = window.scrollY;
-    if (scrollY < window.innerHeight) {
-      setBackgroundClass('bg-center');
-    } else if (scrollY < 2 * window.innerHeight) {
-      setBackgroundClass('grayscale bg-center');
+    const windowHeight = window.innerHeight;
+
+    // Fortschritt zwischen 0 (Start) und 1 (Ende) für jeden Abschnitt
+    let newProgress = scrollY / windowHeight;
+
+    // Dynamische Grayscale-Berechnung
+    if (newProgress >= 0 && newProgress <= 1.8) {
+      const grayscaleValue = Math.min((newProgress), 1); // Von 0 bis 1
+      setBackgroundClass(`grayscale-${grayscaleValue}`);
+      setBackgroundColor('transparent');
     } else {
-      setBackgroundClass(' grayscale bg-white bg-center');
+      setBackgroundColor('white');
     }
   };
-
   window.addEventListener('scroll', handleScroll);
   return () => window.removeEventListener('scroll', handleScroll);
 }, []);
+
   return (
-    <div className={`${backgroundClass} bg-cover`} style={{ backgroundImage: `url(/images/wald_hintergrundbild.jpg)` }}>
-      <div className='max-h-full max-w-full backdrop-blur-sm'>
-        <div className="flex flex-col items-center w-screen h-screen">
+    <div className='bg-cover bg-center h-full w-full'
+      style={{
+        backgroundImage:`url(/images/wald_hintergrundbild.jpg)`,
+        filter: `grayscale(${backgroundClass.includes('grayscale') ? backgroundClass.split('-')[1] : 0})`,
+        transition: 'filter 0.1s linear',
+      }}
+    >
+      <div className='h-full w-full backdrop-blur-sm' style={{backgroundColor: `${backgroundColor}`, transition: 'background-color 0.5s ease-in-out'}}>
+        <div className="flex flex-col items-center w-full h-screen">
           <div className="flex flex-row py-3 px-2 h-1/4 text-black w-full">
             <div className='flex flex-col h-full w-1/3 p-1 justify-center'>
               <img src='/images/Logo_finished.png' alt="Waldlogo" className="object-cover w-1/3 bg-opacity-20"/>
@@ -54,13 +69,18 @@ useEffect(() => {
             </div>
           </div>
         </div>
-        <div className={`flex flex-col items-center h-screen w-screen  ${backgroundClass}`}>
-          <div className='flex flex-col items-center h-full w-full'>
-            <h1 className='flex'>Über den oberwinterthurer Wald</h1>
-            <p className='flex'>Geschichte</p>
+        <div className='flex flex-row items-center pt-5 h-screen w-full'>
+          <div className='flex justify-center h-full w-1/3'>
+            <p className='flex'>Bild nachher</p>
+          </div>
+          <div className='flex justify-center h-full w-1/3'>
+            <p className='flex'>Text nachehr</p>
+          </div>
+          <div className='flex justify-center h-full w-1/3'>
+            <p className='flex'>Bild nachher</p>
           </div>
         </div>
-        <div className={`flex flex-col items-center h-screen w-screen ${backgroundClass}`}>
+        <div className='flex flex-col items-center pt-5 h-screen w-full'>
           <h1 className='flex'>Sehenswürdigkeiten und Nutzung</h1>
         </div>
       </div>
