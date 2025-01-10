@@ -1,9 +1,25 @@
 import React, { useEffect, useState } from 'react';
 
+const attractionCardData = [
+  { image: '/images/image1.jpg', text: 'Beschreibung für Bild 1' },
+  { image: '/images/image2.jpg', text: 'Beschreibung für Bild 2' },
+  { image: '/images/image3.jpg', text: 'Beschreibung für Bild 3' },
+];
+
 function HomePage() {
 
-  const [backgroundClass, setBackgroundClass] = useState('grayscale-0');
-  const [backgroundColor, setBackgroundColor] = useState('none');
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleNext = () => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % attractionCardData.length);
+  };
+
+  const handlePrev = () => {
+    setActiveIndex((prevIndex) => (prevIndex - 1 + attractionCardData.length) % attractionCardData.length);
+  };
+
+  const [backgroundClass, setBackgroundClass] = useState('grayscale-0'); // Fliessende Graustufe hinzufügen
+  const [backgroundColor, setBackgroundColor] = useState('none'); // Hintergrundfarbe setzen zweit höchstet (blur) div
 
 
 useEffect(() => {
@@ -31,7 +47,7 @@ useEffect(() => {
     <div className='bg-cover bg-center h-full w-full'
       style={{
         backgroundImage:`url(/images/wald_hintergrundbild.jpg)`,
-        filter: `grayscale(${backgroundClass.includes('grayscale') ? backgroundClass.split('-')[1] : 0})`,
+        filter: `grayscale(${backgroundClass.includes('grayscale') ? backgroundClass.split('-')[1] : 0})`, // Verbesserbar, muss nicht split, kann Zahl
         transition: 'filter 0.1s linear',
       }}
     >
@@ -69,19 +85,44 @@ useEffect(() => {
             </div>
           </div>
         </div>
-        <div className='flex flex-row items-center pt-5 h-screen w-full'>
-          <div className='flex justify-center h-full w-1/3'>
-            <p className='flex'>Bild nachher</p>
-          </div>
-          <div className='flex justify-center h-full w-1/3'>
-            <p className='flex'>Text nachehr</p>
-          </div>
-          <div className='flex justify-center h-full w-1/3'>
-            <p className='flex'>Bild nachher</p>
+        <div className='flex flex-col pt-5 h-screen w-full'>
+          <h1 className='flex mb-3 justify-center'>Geschichte</h1>
+          <div className='flex flex-row h-full w-full'>
+            <div className='flex justify-center h-full w-1/3'>
+              <p className='flex'>Bild nachher</p>
+            </div>
+            <div className='flex justify-center h-full w-1/3'>
+              <p className='flex'>Text nachehr</p>
+            </div>
+            <div className='flex justify-center h-full w-1/3'>
+              <p className='flex'>Bild nachher</p>
+            </div>
           </div>
         </div>
         <div className='flex flex-col items-center pt-5 h-screen w-full'>
           <h1 className='flex'>Sehenswürdigkeiten und Nutzung</h1>
+          <div className='flex flex-row items-center justify-center h-4/5 w-full'>
+            <div className="bg-white rounded-lg shadow-xl h-full w-1/2 flex items-center justify-center p-4">
+              <img src={attractionCardData[activeIndex].image} alt="Karteikarten-Bild" className="object-cover rounded-lg h-5/6 w-5/6" />
+            </div>
+            <div className="bg-white rounded-lg shadow-xl h-full w-1/2 flex items-center justify-center p-6 text-center">
+              <p className="text-lg font-medium">{attractionCardData[activeIndex].text}</p>
+            </div>
+          </div>
+            <div className="flex flex-row justify-center items-center mt-6 h-1/5 w-full">
+              <button
+                onClick={handlePrev}
+                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full shadow-md transition-all"
+              >
+                ←
+              </button>
+              <button
+                onClick={handleNext}
+                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full shadow-md transition-all"
+              >
+                →
+              </button>
+            </div>
         </div>
       </div>
     </div>
