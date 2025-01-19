@@ -60,6 +60,7 @@ function HomePage() {
   const [floraIndex, setFloraIndex] = useState(0);
   const [backgroundClass, setBackgroundClass] = useState('grayscale-0'); // Graustufen-Effekt
   const [backgroundColor, setBackgroundColor] = useState('transparent'); // Hintergrundfarbe
+  const [secondaryBackgroundColor, setSecondaryBackgroundColor] = useState('transparent');
   const [imageTransparency, setImageTransparency] = useState(0); // Bildtransparenz
 
   const handleNext = () => {
@@ -86,6 +87,7 @@ function HomePage() {
     setFloraIndex((prevIndex) => (prevIndex - 1 + FloraCardData.length) % FloraCardData.length);
   };
 
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -100,6 +102,7 @@ function HomePage() {
       } else {
         setBackgroundClass('grayscale-0');
         setBackgroundColor('white');
+        setSecondaryBackgroundColor('darkgreen');
         setImageTransparency(1);
       }
     };
@@ -135,28 +138,28 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="flex flex-col h-3/4 w-full">
+          <div id='home' className="flex flex-col h-3/4 w-full">
             <nav className="flex flex-row w-full bg-green-700 border-black border-2 text-white">
               <a
-                href="#ueber"
+                href="#home"
                 className="flex items-center justify-center py-2 px-6 w-1/4 hover:border-b-2 hover:border-white hover:bg-green-600 transition-all duration-100"
               >
                 Home
               </a>
               <a
-                href="#flora-fauna"
+                href="#story"
                 className="flex items-center justify-center py-2 px-6 w-1/4 hover:border-b-2 hover:border-white hover:bg-green-600 transition-all duration-100"
               >
                 Über den Wald
               </a>
               <a
-                href="#sehenswuerdigkeiten"
+                href="#life"
                 className="flex items-center justify-center py-2 px-6 w-1/4 hover:border-b-2 hover:border-white hover:bg-green-600 transition-all duration-100"
               >
                 Flora und Fauna
               </a>
               <a
-                href="#nutzung"
+                href="#tourism"
                 className="flex items-center justify-center py-2 px-6 w-1/4 hover:border-b-2 hover:border-white hover:bg-green-600 transition-all duration-100"
               >
                 Nutzung und Sehenswürdigkeiten
@@ -164,34 +167,46 @@ function HomePage() {
             </nav>
             <div className="flex flex-row h-full w-full items-center py-9 px-10">
               <div className="h-full w-1/2 bg-white bg-opacity-80">
-                <p>später Einleitungsvideo</p>
+                <iframe
+                  width="100%"  // Optional: Passt die Breite des Videos an den Container an
+                  height="100%"  // Optional: Passt die Höhe des Videos an den Container an
+                  src="https://youtu.be/1NzSzBkjYp8?feature=shared" // Ersetze DEIN_VIDEO_ID mit der tatsächlichen Video-ID
+                  frameBorder="0"  // Optional: Entfernt den Rand um das Video
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen  // Ermöglicht die Vollbildansicht des Videos
+                ></iframe>
               </div>
-              <div className="h-full w-1/2 py-5 px-8">
-                <p>
-                  Einleitungstext sehr cool gestaltet, brauche viel Text als
-                  Platzhalter für Referenz.
+              <div className="h-full w-1/2 py-5 px-8 bg-gradient-to-r from-green-300 via-green-200 to-green-100 rounded-lg shadow-lg">
+                <p className="text-2xl font-semibold text-gray-800 mb-4">
+                  Der Oberwinterthurer Wald ist ein grünes Paradies, das zum Wandern und Entspannen einlädt. Mit seinen jahrhundertealten Bäumen, klaren Waldbächen und einer reichen Tierwelt bietet er Erholung und Abenteuer inmitten der Natur.
+                </p>
+                <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                  In diesem Wald verschmelzen Geschichte und Natur – alte Pfade und traditionelle Hütten erzählen von vergangenen Zeiten. Ob für einen ruhigen Spaziergang oder eine ausgedehnte Wanderung, der Oberwinterthurer Wald ist der perfekte Rückzugsort für Naturfreunde.
                 </p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col pt-5 h-screen w-full">
+        <div id='story' className="flex flex-col pt-5 h-screen w-full">
           <h1 className="flex mb-3 justify-center">Geschichte</h1>
           <div className="flex flex-row h-full w-full">
-            <div className="flex justify-center h-full w-1/3">
-              <p>Bild nachher</p>
+            <div className="flex flex-col justify-center h-full w-1/3">
+              <img src="images/Roemer_schweiz.jpeg" alt="" className="mb-4 rounded-lg shadow-md" />
+              <img src="images/Vitudurum.jpeg" alt="" className="rounded-lg shadow-md" />
+            </div>
+            <div className="flex justify-center h-full w-1/3 p-6 bg-gray-100 rounded-lg shadow-md">
+              <p className="text-lg font-medium text-gray-800 leading-relaxed">
+                Die Römer hinterließen auch in Winterthur ihre Spuren. Im ersten Jahrhundert nach Christus war Vindonissa im Aargau ein wichtiges römisches Zentrum. In der Umgebung von Winterthur gab es römische Villen und landwirtschaftliche Siedlungen. Archäologische Funde wie Münzen und Keramiken belegen ihre Präsenz. Ihre Verbesserung des Straßennetzes und der Infrastruktur prägte die Region nachhaltig.
+              </p>
             </div>
             <div className="flex justify-center h-full w-1/3">
-              <p>Text nachher</p>
-            </div>
-            <div className="flex justify-center h-full w-1/3">
-              <p>Bild nachher</p>
+              <img src="images/Rom_krieg.webp" alt="" className="rounded-lg shadow-md" />
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col items-center w-full h-screen" style={{ backgroundColor, transition: 'background-color 0.5s ease-in-out' }}>
+        <div id='tourism' className="flex flex-col items-center w-full h-screen" style={{ backgroundColor: `${secondaryBackgroundColor}`, opacity: `${imageTransparency}`, transition: 'background-color 0.5s ease-in-out, opacity 0.5 ease-in-out' }}>
           <div className="flex justify-between w-full h-4/5 px-12">
             <div className="relative w-1/2 flex justify-center items-center">
               {attractionCardData.map((item, index) => {
@@ -275,101 +290,96 @@ function HomePage() {
             </button>
           </div>
         </div>
-        <div className="flex flex-col w-full h-screen">
-          <div className="flex w-full h-full">
-            {/* Fauna Kartenbereich */}
-            <div className="relative w-1/2 flex justify-center items-center">
-              {FaunaCardData.map((item, index) => {
-                const offset = (index - faunaIndex + FaunaCardData.length) % FaunaCardData.length;
-                const scale = Math.pow(0.8, Math.abs(offset));
-                const opacity = Math.pow(0.7, Math.abs(offset));
-                const translateX = offset * -60; // Fauna Karten gehen nach links
-                const translateY = offset * 20;
-                const finalOpacity = opacity * imageTransparency;
-
-                return (
-                  <div
-                    key={index} // Sicherstellen, dass jede Karte einen eindeutigen Schlüssel hat
-                    className="absolute w-2/3 rounded-lg shadow-md transition-transform duration-500"
-                    style={{
-                      transform: `translateX(${translateX}px) translateY(${translateY}px) scale(${scale})`,
-                      zIndex: -Math.abs(offset) + 2,
-                      opacity: finalOpacity,
-                    }}
-                  >
-                    <div className="relative w-full pb-[75%] overflow-hidden rounded-lg">
-                      <img src={item.image} alt={item.title} className="absolute inset-0 w-full h-full object-cover" />
-                    </div>
+        {/* Fauna und Flora Karussell-Abschnitt */}
+        <div id='life' className="flex flex-row w-full h-full mt-80"> {/* Hinzugefügter Abstand hier */}
+          {/* Fauna Karussell */}
+          <div className="relative w-1/2 flex justify-center items-center">
+            {FaunaCardData.map((item, index) => {
+              const offset = (index - faunaIndex + FaunaCardData.length) % FaunaCardData.length;
+              const scale = Math.pow(0.8, Math.abs(offset));  // Skalierung beibehalten, um Karten kleiner zu machen
+              const opacity = Math.pow(0.7, Math.abs(offset));
+              const translateX = offset * -60;
+              const translateY = offset * 20;
+              return (
+                <div
+                  key={index}
+                  className="absolute w-3/4 rounded-lg shadow-md transition-transform duration-500"
+                  style={{
+                    transform: `translateX(${translateX}px) translateY(${translateY}px) scale(${scale})`,
+                    zIndex: -Math.abs(offset) + 2,
+                    opacity,
+                  }}
+                >
+                  <div className="relative w-full pb-[75%] overflow-hidden rounded-lg">
+                    <img src={item.image} alt={item.title} className="absolute inset-0 w-full h-full object-cover" />
                   </div>
-                );
-              })}
-            </div>
-
-            {/* Flora Kartenbereich */}
-            <div className="relative w-1/2 flex justify-center items-center">
-              {FloraCardData.map((item, index) => {
-                const offset = (index - floraIndex + FloraCardData.length) % FloraCardData.length;
-                const scale = Math.pow(0.7, offset);
-                const opacity = Math.pow(0.7, offset);
-                const translateX = offset * 60; // Flora Karten gehen nach rechts
-                const translateY = offset * 20;
-                const finalOpacity = opacity * imageTransparency;
-
-                return (
-                  // Container für Flora Karten
-                  <div
-                    key={index} // Sicherstellen, dass jede Karte einen eindeutigen Schlüssel hat
-                    className="relative w-full h-full bg-white rounded-lg overflow-hidden shadow-md"
-                  >
-                    {/* Obere Hälfte: Bild */}
-                    <div className="w-full h-1/2 pb-[50%] relative overflow-hidden">
-                      <img
-                        src={item.image}
-                        alt={`Image ${index}`}
-                        className="absolute inset-0 w-full h-full object-cover"
-                      />
-                    </div>
-                    {/* Untere Hälfte: Beschreibung */}
-                    <div className="w-full h-1/2 p-4 flex flex-col justify-center items-center text-center">
-                      <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                      <p className="text-base">{item.text}</p>
-                    </div>
+                  <div className="w-full h-1/3 p-4 flex flex-col justify-center items-center text-center bg-white rounded-b-lg">
+                    <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                    <p className="text-base">{item.text}</p>
                   </div>
-                );
-              })}
+                </div>
+              );
+            })}
+            {/* Pfeile unter Fauna */}
+            <div className="absolute bottom-[-400px] flex justify-center w-full px-8"> {/* Abstand nach unten vergrößert */}
+              <button
+                onClick={handlePrevFauna}
+                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full shadow-md"
+              >
+                ←
+              </button>
+              <button
+                onClick={handleNextFauna}
+                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full shadow-md"
+              >
+                →
+              </button>
             </div>
           </div>
 
-          {/* Buttons für Fauna */}
-          <div className="flex justify-center items-center mt-6 space-x-4">
-            <button
-              onClick={handlePrevFauna}
-              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full shadow-md transition-all"
-            >
-              ←
-            </button>
-            <button
-              onClick={handleNextFauna}
-              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full shadow-md transition-all"
-            >
-              →
-            </button>
-          </div>
-
-          {/* Buttons für Flora */}
-          <div className="flex justify-center items-center mt-6 space-x-4">
-            <button
-              onClick={handlePrevFlora}
-              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full shadow-md transition-all"
-            >
-              ←
-            </button>
-            <button
-              onClick={handleNextFlora}
-              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full shadow-md transition-all"
-            >
-              →
-            </button>
+          {/* Flora Karussell */}
+          <div className="relative w-1/2 flex justify-center items-center">
+            {FloraCardData.map((item, index) => {
+              const offset = (index - floraIndex + FloraCardData.length) % FloraCardData.length;
+              const scale = Math.pow(0.8, Math.abs(offset));  // Skalierung beibehalten
+              const opacity = Math.pow(0.7, Math.abs(offset));
+              const translateX = offset * 60;
+              const translateY = offset * 20;
+              return (
+                <div
+                  key={index}
+                  className="absolute w-3/4 rounded-lg shadow-md transition-transform duration-500"
+                  style={{
+                    transform: `translateX(${translateX}px) translateY(${translateY}px) scale(${scale})`,
+                    zIndex: -Math.abs(offset) + 2,
+                    opacity,
+                  }}
+                >
+                  <div className="relative w-full pb-[75%] overflow-hidden rounded-lg">
+                    <img src={item.image} alt={item.title} className="absolute inset-0 w-full h-full object-cover" />
+                  </div>
+                  <div className="w-full h-1/3 p-4 flex flex-col justify-center items-center text-center bg-white rounded-b-lg">
+                    <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                    <p className="text-base">{item.text}</p>
+                  </div>
+                </div>
+              );
+            })}
+            {/* Pfeile unter Flora */}
+            <div className="absolute bottom-[-400px] flex justify-center w-full px-8"> {/* Abstand nach unten vergrößert */}
+              <button
+                onClick={handlePrevFlora}
+                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full shadow-md"
+              >
+                ←
+              </button>
+              <button
+                onClick={handleNextFlora}
+                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full shadow-md"
+              >
+                →
+              </button>
+            </div>
           </div>
         </div>
       </div>
